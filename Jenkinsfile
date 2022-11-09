@@ -1,4 +1,3 @@
-def COMMIT = sh ("git rev-parse --short HEAD")
 pipeline {
     agent any
     stages {
@@ -8,7 +7,14 @@ pipeline {
                 sh "cat ./README.md"
                 sh "pwd"
                 sh "ls -a"
+                
+                GIT_COMMIT = sh (
+                    script: 'git rev-parse --short HEAD',
+                    returnStdout: true
+                ).trim()
+                echo "Git commit: ${GIT_COMMIT}"
                 echo env.JOB_NAME
+
                 sh "echo $GIT_COMMIT"
             }
         }
