@@ -1,7 +1,7 @@
 pipeline {
     agent any
+    def GIT_COMMIT = sh "git rev-parse --short HEAD"
     stages {
-        def GIT_COMMIT = sh "git rev-parse --short HEAD"
         stage ('Jenkins') {
             steps {
                 sh "echo 'This is the master branch'"
