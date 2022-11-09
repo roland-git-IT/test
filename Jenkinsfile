@@ -1,6 +1,6 @@
+def GIT_COMMIT = sh "git rev-parse --short HEAD"
 pipeline {
     agent any
-    def GIT_COMMIT = sh "git rev-parse --short HEAD"
     stages {
         stage ('Jenkins') {
             steps {
