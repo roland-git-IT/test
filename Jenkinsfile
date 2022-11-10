@@ -11,10 +11,7 @@ pipeline {
                 script {
                     def COMMIT = sh "git rev-parse --short HEAD"
                 }
-                sh """
-                    COMMIT1 = git rev-parse --short HEAD
-                """
-                sh "echo $COMMIT1"
+                echo env.COMMIT
             }
         }
     }
