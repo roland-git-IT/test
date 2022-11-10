@@ -1,5 +1,5 @@
 script {
-    COMMIT = sh "git rev-parse --short HEAD"
+    def COMMIT = sh "git rev-parse --short HEAD"
 }
 pipeline {
     agent any
