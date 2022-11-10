@@ -1,6 +1,4 @@
-script {
-    def COMMIT = 123456
-}
+def COMMIT = 123456
 pipeline {
     agent any
     stages {
