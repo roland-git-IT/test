@@ -8,6 +8,8 @@ node {
         }
         GIT_COMMIT = sh (script: 'git rev-parse --short HEAD', returnStdout: true).trim()
         echo "Git commit: ${GIT_COMMIT}"
+
+        echo env.JOB_NAME
         sh """
             echo "$BRANCH"
         """
