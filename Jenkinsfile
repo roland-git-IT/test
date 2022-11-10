@@ -3,10 +3,11 @@
 node {
     stage ('scripting') {
         properties([parameters([string(defaultValue: 'ghost', description: 'Ghost in shell', name: 'python')])])
+        properties([parameters([string(defaultValue: 'master', description: 'master branch', name: 'branch')])])
         //string(name: 'branch', defaultValue: 'master', description: "This is the production branch")
         def BRANCH = env.BRANCH_NAME
         withCredentials([usernamePassword(credentialsId: 'github_token', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {
-            git url: 'https://github.com/roland-git-IT/test.git', branch: env.BRANCH_NAME
+            git url: 'https://github.com/roland-git-IT/test.git', branch: '${params.branch}'
         }
         GIT_COMMIT = sh (script: 'git rev-parse --short HEAD', returnStdout: true).trim()
         echo "Git commit: ${GIT_COMMIT}"
@@ -20,7 +21,7 @@ node {
             echo "$BRANCH"
             echo "${params.python}"
         """
-        echo "${params.python}"
+        //echo "${params.python}"
         
         //COMMIT = env.GIT_COMMIT
         //echo env.GIT_COMMIT
