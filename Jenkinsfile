@@ -15,7 +15,7 @@ node {
         // withCredentials([usernamePassword(credentialsId: 'github_token', usernameVariable: 'UN', passwordVariable: 'PW')]) {
         //     git url: 'https://github.com/roland-git-IT/test.git', branch: env.BRANCH_NAME
         // }
-        git branch: 'master',
+        git branch: env.BRANCH_NAME,
             credentialsId: 'github_token',
             url: 'https://github.com/roland-git-IT/test.git'
         
