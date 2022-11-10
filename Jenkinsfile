@@ -1,7 +1,8 @@
 //def branch = env.BRANCH_NAME
+properties([parameters([string(defaultValue: 'ghost', description: 'Ghost in shell', name: 'python')])])
 node {
     stage ('scripting') {
-        //string(name: 'branch', defaultValue: 'master', description: "This is the production branch")
+        string(name: 'branch', defaultValue: 'master', description: "This is the production branch")
         def BRANCH = env.BRANCH_NAME
         withCredentials([usernamePassword(credentialsId: 'github_token', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {
             git url: 'https://github.com/roland-git-IT/test.git', branch: env.BRANCH_NAME
@@ -10,12 +11,14 @@ node {
         echo "Git commit: ${GIT_COMMIT}"
 
         echo env.JOB_NAME
-        script {
-            def JOB = env.JOB_NAME | sh "$(awk -F \"/\" '{print \$1}')"
-        }
+        // script {
+        //     def JOB = env.JOB_NAME | sh "$(awk -F \"/\" '{print \$1}')"
+        // }
+
         sh """
             echo "$BRANCH"
         """
+        echo "${params.python}"
         //COMMIT = env.GIT_COMMIT
         //echo env.GIT_COMMIT
         //sh "echo ${COMMIT}"
