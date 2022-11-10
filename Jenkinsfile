@@ -1,6 +1,7 @@
 def branch = env.BRANCH_NAME
 node {
     stage ('scripting') {
+        echo env.BRANCH_NAME
         withCredentials([usernamePassword(credentialsId: 'github_token', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {
             git url: 'https://github.com/roland-git-IT/test.git', branch: '${branch}'
         }
