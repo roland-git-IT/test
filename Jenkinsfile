@@ -1,3 +1,11 @@
+node {
+    stage ('scripting') {
+        COMMIT = env.GIT_COMMIT
+        echo env.GIT_COMMIT
+        sh "echo ${COMMIT}"
+    }
+}
+
 pipeline {
     agent any
     stages {
@@ -11,13 +19,5 @@ pipeline {
                 echo env.JOB_NAME
             }
         }
-    }
-}
-
-node {
-    stage ('scripting') {
-        COMMIT = env.GIT_COMMIT
-        echo env.GIT_COMMIT
-        sh "echo ${COMMIT}"
     }
 }
