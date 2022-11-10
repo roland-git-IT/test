@@ -1,4 +1,3 @@
-def COMMIT = env.GIT_COMMIT
 pipeline {
     agent any
     stages {
@@ -9,8 +8,14 @@ pipeline {
                 sh "pwd"
                 sh "ls -a"
                 echo env.JOB_NAME
-                sh "echo ${COMMIT}"
             }
         }
+    }
+}
+
+node {
+    stage ('scripting') {
+        COMMIT = env.GIT_COMMIT
+        sh "echo ${COMMIT}"
     }
 }
