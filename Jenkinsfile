@@ -1,8 +1,9 @@
 //def branch = env.BRANCH_NAME
-properties([parameters([string(defaultValue: 'ghost', description: 'Ghost in shell', name: 'python')])])
+
 node {
     stage ('scripting') {
-        string(name: 'branch', defaultValue: 'master', description: "This is the production branch")
+        properties([parameters([string(defaultValue: 'ghost', description: 'Ghost in shell', name: 'python')])])
+        //string(name: 'branch', defaultValue: 'master', description: "This is the production branch")
         def BRANCH = env.BRANCH_NAME
         withCredentials([usernamePassword(credentialsId: 'github_token', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {
             git url: 'https://github.com/roland-git-IT/test.git', branch: env.BRANCH_NAME
