@@ -18,7 +18,7 @@ node {
 
         sh """
             echo "$BRANCH"
-            echo "${params.python}
+            echo "${params.python}"
         """
         echo "${params.python}"
         
