@@ -1,9 +1,9 @@
 //def branch = env.BRANCH_NAME
 //properties([
-parameters([
+parameters {
     string(defaultValue: 'ghost', description: 'Ghost in shell', name: 'python')
     string(defaultValue: 'master', description: 'master branch', name: 'branch')
-])
+}
 //parameters([string(defaultValue: 'master', description: 'master branch', name: 'branch')])
 //])
 node {
