@@ -5,9 +5,14 @@ node {
         withCredentials([usernamePassword(credentialsId: 'github_token', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {
             git url: 'https://github.com/roland-git-IT/test.git', branch: 'master'
         }
-        COMMIT = env.GIT_COMMIT
-        echo env.GIT_COMMIT
-        sh "echo ${COMMIT}"
+        GIT_COMMIT = sh (
+            script: 'git rev-parse --short HEAD',
+            returnStdout: true
+        ).trim()
+        echo "Git commit: ${GIT_COMMIT}"
+        //COMMIT = env.GIT_COMMIT
+        //echo env.GIT_COMMIT
+        //sh "echo ${COMMIT}"
     }
 }
 
