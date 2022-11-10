@@ -1,15 +1,12 @@
 def branch = env.BRANCH_NAME
 node {
     stage ('scripting') {
-        string(name: 'branch', defaultValue: 'master', description: "This is the production branch")
+        //string(name: 'branch', defaultValue: 'master', description: "This is the production branch")
         echo env.BRANCH_NAME
         withCredentials([usernamePassword(credentialsId: 'github_token', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {
             git url: 'https://github.com/roland-git-IT/test.git', branch: 'master'
         }
-        GIT_COMMIT = sh (
-            script: 'git rev-parse --short HEAD',
-            returnStdout: true
-        ).trim()
+        GIT_COMMIT = sh (script: 'git rev-parse --short HEAD', returnStdout: true).trim()
         echo "Git commit: ${GIT_COMMIT}"
         //COMMIT = env.GIT_COMMIT
         //echo env.GIT_COMMIT
