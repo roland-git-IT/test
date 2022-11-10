@@ -11,7 +11,7 @@ pipeline {
                 script {
                     COMMIT = sh "git rev-parse --short HEAD"
                 }
-                sh "echo ${COMMIT}"
+                sh "echo $COMMIT"
             }
         }
     }
