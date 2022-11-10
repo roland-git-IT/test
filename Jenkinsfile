@@ -1,3 +1,4 @@
+def branch = env.BRANCH_NAME
 node {
     stage ('scripting') {
         withCredentials([usernamePassword(credentialsId: 'github_token', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {
