@@ -12,9 +12,13 @@ node {
         //properties([parameters([string(defaultValue: 'master', description: 'master branch', name: 'branch')])])
         //string(name: 'branch', defaultValue: 'master', description: "This is the production branch")
         //def BRANCH = env.BRANCH_NAME //worked here
-        withCredentials([usernamePassword(credentialsId: 'github_token', usernameVariable: 'UN', passwordVariable: 'PW')]) {
-            git url: 'https://github.com/roland-git-IT/test.git', branch: env.BRANCH_NAME
-        }
+        // withCredentials([usernamePassword(credentialsId: 'github_token', usernameVariable: 'UN', passwordVariable: 'PW')]) {
+        //     git url: 'https://github.com/roland-git-IT/test.git', branch: env.BRANCH_NAME
+        // }
+        git branch: 'master',
+            credentialsId: 'github_token',
+            url: 'https://github.com/roland-git-IT/test.git'
+        
         GIT_COMMIT = sh (script: 'git rev-parse --short HEAD', returnStdout: true).trim()
         echo "Git commit: ${GIT_COMMIT}"
 
