@@ -8,8 +8,10 @@ pipeline {
                 sh "pwd"
                 sh "ls -a"
                 echo env.JOB_NAME
-                def COMMIT = sh "git rev-parse --short HEAD"
-                sh "echo $GIT_COMMIT"
+                script {
+                    def COMMIT = sh "git rev-parse --short HEAD"
+                }
+                sh "echo $COMMIT"
             }
         }
     }
