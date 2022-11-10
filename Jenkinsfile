@@ -8,7 +8,7 @@ pipeline {
                 sh "pwd"
                 sh "ls -a"
                 echo env.JOB_NAME
-                //sh "echo $GIT_COMMIT"
+                sh "echo $GIT_COMMIT"
             }
         }
     }
