@@ -11,7 +11,7 @@ pipeline {
                 sh "pwd"
                 sh "ls -a"
                 echo env.JOB_NAME
-                sh "echo $COMMIT"
+                sh "echo ${COMMIT}"
             }
         }
     }
