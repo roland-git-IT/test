@@ -1,3 +1,6 @@
+script {
+    COMMIT = sh "git rev-parse --short HEAD"
+}
 pipeline {
     agent any
     stages {
@@ -8,9 +11,6 @@ pipeline {
                 sh "pwd"
                 sh "ls -a"
                 echo env.JOB_NAME
-                script {
-                    COMMIT = sh "git rev-parse --short HEAD"
-                }
                 sh "echo $COMMIT"
             }
         }
