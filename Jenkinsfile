@@ -3,7 +3,7 @@ node {
     stage ('scripting') {
         echo env.BRANCH_NAME
         withCredentials([usernamePassword(credentialsId: 'github_token', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {
-            git url: 'https://github.com/roland-git-IT/test.git', branch: 'env.BRANCH_NAME'
+            git url: 'https://github.com/roland-git-IT/test.git', branch: 'master'
         }
         COMMIT = env.GIT_COMMIT
         echo env.GIT_COMMIT
