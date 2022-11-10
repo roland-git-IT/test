@@ -7,6 +7,7 @@ pipeline {
                 sh "cat ./README.md"
                 sh "pwd"
                 sh "ls -a"
+                echo env.GIT_COMMIT
                 echo env.JOB_NAME
             }
         }
