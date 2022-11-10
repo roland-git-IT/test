@@ -1,4 +1,4 @@
-def COMMIT = 123456
+def COMMIT = env.GIT_COMMIT
 pipeline {
     agent any
     stages {
