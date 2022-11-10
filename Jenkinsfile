@@ -16,6 +16,7 @@ pipeline {
 node {
     stage ('scripting') {
         COMMIT = env.GIT_COMMIT
+        echo env.GIT_COMMIT
         sh "echo ${COMMIT}"
     }
 }
