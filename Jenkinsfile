@@ -10,6 +10,7 @@ node {
         echo "Git commit: ${GIT_COMMIT}"
 
         echo env.JOB_NAME
+        def JOB = env.JOB_NAME|sh """awk -F "/" '{print $1}'"""
         sh """
             echo "$BRANCH"
         """
