@@ -1,6 +1,6 @@
 node {
     stage ('scripting') {
-        withCredentials([usernamePassword(credentialsId: "${github_token}", usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {
+        withCredentials([usernamePassword(credentialsId: 'github_token', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {
             git url: 'https://github.com/roland-git-IT/test.git', branch: '${branch}'
         }
         COMMIT = env.GIT_COMMIT
