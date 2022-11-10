@@ -18,8 +18,10 @@ node {
 
         sh """
             echo "$BRANCH"
+            echo "${params.python}
         """
         echo "${params.python}"
+        
         //COMMIT = env.GIT_COMMIT
         //echo env.GIT_COMMIT
         //sh "echo ${COMMIT}"
