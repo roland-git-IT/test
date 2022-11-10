@@ -2,15 +2,16 @@
 //properties([
 parameters {
     string(defaultValue: 'ghost', description: 'Ghost in shell', name: 'python')
-    string(defaultValue: 'master', description: 'master branch', name: 'branch')
+    //string(defaultValue: 'master', description: 'master branch', name: 'branch')
 }
+def BRANCH = env.BRANCH_NAME
 //parameters([string(defaultValue: 'master', description: 'master branch', name: 'branch')])
 //])
 node {
     stage ('scripting') {
         //properties([parameters([string(defaultValue: 'master', description: 'master branch', name: 'branch')])])
         //string(name: 'branch', defaultValue: 'master', description: "This is the production branch")
-        def BRANCH = env.BRANCH_NAME
+        //def BRANCH = env.BRANCH_NAME //worked here
         withCredentials([usernamePassword(credentialsId: 'github_token', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {
             git url: 'https://github.com/roland-git-IT/test.git', branch: env.BRANCH_NAME
         }
