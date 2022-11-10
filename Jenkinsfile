@@ -1,8 +1,8 @@
 //def branch = env.BRANCH_NAME
-properties([
-            parameters([string(defaultValue: 'ghost', description: 'Ghost in shell', name: 'python')])
-            //parameters([string(defaultValue: 'master', description: 'master branch', name: 'branch')])
-])
+//properties([
+parameters([string(defaultValue: 'ghost', description: 'Ghost in shell', name: 'python')])
+//parameters([string(defaultValue: 'master', description: 'master branch', name: 'branch')])
+//])
 node {
     stage ('scripting') {
         //properties([parameters([string(defaultValue: 'master', description: 'master branch', name: 'branch')])])
