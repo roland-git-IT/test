@@ -9,7 +9,7 @@ pipeline {
                 sh "ls -a"
                 echo env.JOB_NAME
                 script {
-                    def COMMIT = sh "git rev-parse --short HEAD"
+                    COMMIT = sh "git rev-parse --short HEAD"
                 }
                 sh "echo ${COMMIT}"
             }
